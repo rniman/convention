@@ -44,3 +44,5 @@ python -m venv .venv
 구성 근거: [MkDocs 설정·hooks](https://www.mkdocs.org/user-guide/configuration/#hooks), [Material for MkDocs 검색 설정](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/). 확인일: 2026-09-12.
 
 배포 구성 근거: [GitHub Pages 사용자 지정 워크플로](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). 확인일: 2026-09-12.
+
+목차 표현은 [Material for MkDocs 탐색 설정](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/)과 [추가 CSS](https://squidfunk.github.io/mkdocs-material/customization/#additional-css)를 사용합니다. 분류는 접어서 표시하며 현재 문서의 상위 분류는 펼칩니다. 데스크톱 들여쓰기와 제목 강조는 `docs/stylesheets/navigation.css`에서 관리합니다. 확인일: 2026-09-12.
