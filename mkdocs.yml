@@ -1,0 +1,68 @@
+site_name: 나의 컨벤션 위키
+site_url: https://rniman.github.io/convention/
+site_description: C++ 코딩·설계와 Git 협업을 위한 개인 개발 컨벤션
+repo_url: https://github.com/rniman/convention
+repo_name: rniman/convention
+site_dir: site
+docs_dir: .site-src
+theme:
+  name: material
+  language: ko
+  font: false
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: 어두운 화면으로 전환
+    - scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: 밝은 화면으로 전환
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+plugins:
+  - search:
+      lang: en
+markdown_extensions:
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/name:markdown.extensions.toc.slugify_unicode
+  - pymdownx.highlight
+  - pymdownx.superfences
+nav:
+  - 홈: index.md
+  - 전체 목차: docs/index.md
+  - 컨벤션 적용 기준: docs/baseline.md
+  - 코딩:
+      - 소개: docs/coding/index.md
+      - C++:
+          - 목차: docs/coding/cpp/index.md
+          - 명명: docs/coding/cpp/naming.md
+          - 초기화: docs/coding/cpp/initialization.md
+          - 포맷: docs/coding/cpp/formatting.md
+          - const: docs/coding/cpp/const.md
+          - 주석: docs/coding/cpp/comments.md
+          - 헤더·include: docs/coding/cpp/headers.md
+          - 함수 매개변수·반환: docs/coding/cpp/functions.md
+  - 설계:
+      - 소개: docs/design/index.md
+      - C++ 소유권·수명: docs/design/cpp-ownership.md
+  - Git·협업:
+      - 소개: docs/git/index.md
+      - 커밋 메시지: docs/git/commit-messages.md
+      - 브랜치 명명: docs/git/branches.md
+  - 후속 정리:
+      - 테스트·품질: docs/quality/index.md
+      - 프로젝트·빌드: docs/build/index.md
+      - 문서화: docs/documentation/index.md
+      - 프로젝트별 규칙: docs/projects/index.md
+

@@ -1,0 +1,25 @@
+# Local reference materials
+/ref/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local editor state
+/.vs/
+/.idea/
+*.swp
+*.swo
+*~
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Documentation build environment and generated output
+/.venv/
+/.site-src/
+/site/
+__pycache__/
