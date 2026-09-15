@@ -63,8 +63,12 @@ nav:
       - Git·협업 소개: git/index.md
       - 커밋 메시지: git/commit-messages.md
       - 브랜치 명명: git/branches.md
-  - 후속 정리:
-      - 테스트·품질: quality/index.md
-      - 문서화: documentation/index.md
-      - 프로젝트별 규칙: projects/index.md
-
+      - 원본과 생성물 관리 (초안): git/artifacts.md
+  - 테스트·품질:
+      - 테스트·품질 소개: quality/index.md
+      - 변경 검증과 결과 기록 (초안): quality/verification.md
+  - 문서화:
+      - 문서화 소개: documentation/index.md
+  - 프로젝트별 규칙:
+      - 프로젝트별 소개: projects/index.md
+      - RnimanEngine (참조 초안): projects/rniman-engine.md

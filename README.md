@@ -8,6 +8,9 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 
 - [C++ 코딩 규칙](docs/coding/cpp/index.md): 명명, 포맷, 초기화, const, 주석, 헤더, 함수, 소유권·수명
 - [Git·협업 규칙](docs/git/index.md): 커밋 메시지, 브랜치 명명
+- [RnimanEngine 프로젝트 정리](docs/projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 문서 안내
+- [위키와 프로젝트의 상호 반영](docs/baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 프로젝트의 새 결정 반영
+- 공통화 초안: [검증 결과](docs/quality/verification.md) · [원본과 생성물](docs/git/artifacts.md)
 
 채택 범위와 변경 기록은 **컨벤션 적용 기준**에서 관리합니다. 나머지 분류와 각 문서의 후속·미결정 사항은 아직 채택된 규칙이 아닙니다.
 
