@@ -59,6 +59,7 @@ nav:
           - 헤더·include: coding/cpp/headers.md
           - 함수 매개변수·반환: coding/cpp/functions.md
           - 소유권·수명: coding/cpp/ownership.md
+      - HLSL 셰이더 규칙 (초안): coding/hlsl.md
   - Git·협업:
       - Git·협업 소개: git/index.md
       - 커밋 메시지: git/commit-messages.md

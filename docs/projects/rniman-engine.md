@@ -2,7 +2,7 @@
 
 [프로젝트별 목차](index.md) · 관련: [컨벤션 적용 기준](../baseline.md), [검증 결과 기록](../quality/verification.md), [원본과 생성물 관리](../git/artifacts.md)
 
-상태: 참조 초안(아래 D3D12 초기 구현 선택과 프레임 동기화 전환만 프로젝트 한정 채택) · 적용 범위: RnimanEngine · 확인일: 2026-09-17
+상태: 참조 초안(아래 D3D12 초기 구현 선택과 프레임 동기화 전환만 프로젝트 한정 채택) · 적용 범위: RnimanEngine · 확인일: 2026-09-18
 
 D3D12 기반 미니 게임 엔진의 컨벤션 적용과 프로젝트 제약을 요약한다. 상세 구현·실행 안내·검증 기록은 프로젝트 저장소에서 관리한다. 원본은 비공개 저장소이므로 접근 권한이 필요하다.
 
@@ -58,6 +58,26 @@ D3D12 기반 미니 게임 엔진의 컨벤션 적용과 프로젝트 제약을 
 
 현재 두 백 버퍼에 대응하는 슬롯, 단일 Command List와 공유 Fence/Event는 Sandbox에 한정한 구현 선택이다. Allocator는 해당 제출의 완료 후에만 재사용하며 제출 실패 시에도 자원 정리를 시도한다. 이 선택을 다중 Queue나 공통 C++ 동기화 규칙으로 확대하지 않는다. 상세 흐름·검증 결과·성능 미측정 상태는 [원본 개발 문서](https://github.com/rniman/RnimanEngine/blob/main/docs/development.md#프레임별-fence-동기화)에서 관리한다.
 
+## 삼각형 출력의 시험 적용
+
+2026-09-18 Sandbox 삼각형 구현에서 다음을 **프로젝트 한정 시험 적용**했다. 공통 C++ 규칙이나 장기 그래픽스 정책으로 채택한 것은 아니다.
+
+- 기존 빌드 시 셰이더 컴파일·앱별 출력 방향을 적용하고, SDK FXC·Shader Model 5.0과 EXE 기준 CSO 로딩을 사용한다. 설치 도구와 기존 하드웨어 요구를 유지하는 초기 선택이며 SM6 기능 도입 시 DXC 전환을 검토한다.
+- 세 정점의 고정 데이터만 Upload Heap에서 직접 읽고 CPU가 다시 쓰지 않는다. 일반 메시 로더의 업로드 정책으로 확대하지 않는다.
+- 중앙 정사각형 Viewport로 창 비율에 따른 삼각형 왜곡을 막는다. 카메라 투영 정책은 해당 기능 구현 시 정한다.
+
+셰이더 빌드 설정은 실제 소비자인 Sandbox·RendererSmoke 사이에서만 공유한다. 구현 흐름·검증 결과·미검증 범위는 [엔진 개발 문서](https://github.com/rniman/RnimanEngine/blob/main/docs/development.md#삼각형-출력과-검증), 파일 배치는 [원본 구조 문서](https://github.com/rniman/RnimanEngine/blob/main/docs/project-structure.md#셰이더와-공용-캐시)에서 관리한다.
+
+## HLSL 컨벤션 적용 상태
+
+2026-09-18 [HLSL 셰이더 규칙](../coding/hlsl.md)을 **공통 초안**으로 작성했다. 아래는 기존 로컬 구현과 초안의 일치 여부이며, 공통 규칙을 채택하거나 엔진 전체 적용을 완료했다는 의미는 아니다.
+
+- 로컬 `Shaders/Samples/Sandbox/TriangleVS.hlsl`·`TrianglePS.hlsl`의 단계별 파일명과 두 `Main` 진입점, 구조체·필드·매개변수의 표기가 초안과 일치한다.
+- [TriangleShaders.props](https://github.com/rniman/RnimanEngine/blob/main/Sandbox/TriangleShaders.props)에서 `EntryPointName=Main`, `ShaderModel=5.0`, Vertex·Pixel 단계와 `$(OutDir)Shaders/파일명.cso` 출력을 확인했다. 실제 설정의 경로 구분자는 Windows 표기다.
+- 현재 공유 `.hlsli`는 없으며 공유 선언 추출·공간 접미어·변형별 출력 구분은 필요해지는 범위에서 검토한다. 현 삼각형의 `position` 이름을 일괄 변경하지 않았다.
+
+확인 대상은 `D:/STUDY/DirectX12/RnimanEngine`의 로컬 작업 트리다. GitHub 웹 조회는 404로 원격 최신 내용을 확인하지 못했다. 이번 작업은 Convention 문서에만 반영했으며, 엔진 개발 문서에 위키 링크·채택 여부를 기록하는 작업과 엔진 빌드·실행 검증은 미수행이다.
+
 ## 코드 가독성 적용
 
 2026-09-15 Sandbox·RendererSmoke 코드에 [작업 경계와 인자 배치](../coding/cpp/formatting.md#작업-경계와-빈-줄)를 적용했다. 기존 소유권·GPU 동기화와 식별자를 유지하며 작업별 실패 처리와 빈 줄을 정리했다.
@@ -76,6 +96,10 @@ D3D12 기반 미니 게임 엔진의 컨벤션 적용과 프로젝트 제약을 
 2026-09-15에 [원격 커밋 `2845efb`](https://github.com/rniman/RnimanEngine/tree/2845efb4db318fbe9b1df2cdb14ed1cb01849726)의 README·개발 문서·설정·최소 창 코드를 대조했다. 이 링크는 조사 근거 보존용이며 현재 안내는 위 주요 문서를 따른다. 엔진 빌드·실행은 이번 문서 작업에서 수행하지 않았다.
 
 ## 변경 기록
+
+- 2026-09-18: HLSL 공통 초안과 기존 로컬 셰이더·빌드 설정의 일치 범위를 기록했다. 엔진 측 문서 반영은 미수행이며 공통 규칙은 초안으로 유지했다.
+
+- 2026-09-18: 삼각형 데모의 FXC·CSO 로딩·고정 정점 Upload Heap·Viewport 선택을 시험 적용으로 기록했다. 기존 프레임 동기화와 공통 채택 규칙은 유지한다.
 
 - 2026-09-17: 사용자 요청에 따른 프레임별 자원 재사용 대기와 리사이즈·종료 전체 대기를 기록했다. 초기 매 프레임 대기는 대체된 이력으로 유지하고, 검증 상세는 엔진 문서로 연결한다.
 
