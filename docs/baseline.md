@@ -86,6 +86,8 @@
 
 ## 변경 기록
 
+- 2026-09-19: [HTML 기본 컨벤션](coding/html.md)의 점진적 적용·포맷 자동화·브라우저 검증 기준을 보완하고 [Material Forge 참고 기록](projects/material-forge.md)에 후속 적용 순서를 기록했다. 공통 초안 상태를 유지하며 프로젝트 구현·도구 설정은 변경하지 않았다.
+
 - 2026-09-19: Material Forge 소스·문서를 참고해 [HTML 기본 컨벤션](coding/html.md)과 [프로젝트 참고 기록](projects/material-forge.md)을 작성했다. 새 스타일·개선 제안은 초안으로 유지하며 기존 채택 10개 문서의 규칙과 참고 프로젝트 코드는 변경하지 않았다.
 
 - 2026-09-18: [HLSL 셰이더 규칙](coding/hlsl.md)을 사용자 제안에 따라 초안으로 작성하고 [엔진 적용 상태](projects/rniman-engine.md#hlsl-컨벤션-적용-상태)를 연결했다. 기존 채택 10개 문서와 엔진 코드는 변경하지 않았다.
