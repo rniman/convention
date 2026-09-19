@@ -77,12 +77,16 @@
 | --- | --- |
 | [RnimanEngine 프로젝트 기준](projects/rniman-engine.md) | 참조 초안. D3D12 초기 구현 선택과 프레임 동기화 전환은 사용자 결정에 따라 프로젝트 한정 채택하며 시험 적용과 구분 |
 | [HLSL 셰이더 규칙](coding/hlsl.md) | 공통 초안. 명명·좌표 공간·단계별 파일·진입점·공유 include·산출물 구분 |
+| [HTML 기본 컨벤션](coding/html.md) | 공통 초안. 문서 골격·포맷·입력·접근성·JSX 차이 |
+| [Material Forge 참고 기록](projects/material-forge.md) | 참조 초안. 로컬 원본·프로젝트 제약과 HTML 초안 미반영 상태 |
 | [변경 검증과 결과 기록](quality/verification.md) | 공통 초안. 변경 범위와 빌드·실행·화면·성능 검증 |
 | [원본과 생성물 관리](git/artifacts.md) | 공통 초안. 재현 가능한 원본과 생성물의 구분 |
 
 새 초안은 채택 문서 10개에 포함하지 않는다. 프로젝트에서 이미 적용한 선택도 공통 규칙의 자동 채택 근거로 사용하지 않는다. 초안의 필수·권장·선택은 채택 시의 제안 강도다.
 
 ## 변경 기록
+
+- 2026-09-19: Material Forge 소스·문서를 참고해 [HTML 기본 컨벤션](coding/html.md)과 [프로젝트 참고 기록](projects/material-forge.md)을 작성했다. 새 스타일·개선 제안은 초안으로 유지하며 기존 채택 10개 문서의 규칙과 참고 프로젝트 코드는 변경하지 않았다.
 
 - 2026-09-18: [HLSL 셰이더 규칙](coding/hlsl.md)을 사용자 제안에 따라 초안으로 작성하고 [엔진 적용 상태](projects/rniman-engine.md#hlsl-컨벤션-적용-상태)를 연결했다. 기존 채택 10개 문서와 엔진 코드는 변경하지 않았다.
 

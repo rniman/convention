@@ -60,6 +60,7 @@ nav:
           - 함수 매개변수·반환: coding/cpp/functions.md
           - 소유권·수명: coding/cpp/ownership.md
       - HLSL 셰이더 규칙 (초안): coding/hlsl.md
+      - HTML 기본 컨벤션 (초안): coding/html.md
   - Git·협업:
       - Git·협업 소개: git/index.md
       - 커밋 메시지: git/commit-messages.md
@@ -73,3 +74,4 @@ nav:
   - 프로젝트별 규칙:
       - 프로젝트별 소개: projects/index.md
       - RnimanEngine (참조 초안): projects/rniman-engine.md
+      - Material Forge (참조 초안): projects/material-forge.md

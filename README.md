@@ -11,6 +11,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 - [RnimanEngine 프로젝트 정리](docs/projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 문서 안내
 - [위키와 프로젝트의 상호 반영](docs/baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 프로젝트의 새 결정 반영
 - 공통화 초안: [검증 결과](docs/quality/verification.md) · [원본과 생성물](docs/git/artifacts.md)
+- [HTML 기본 컨벤션 초안](docs/coding/html.md): 문서 골격·포맷·입력·접근성·JSX 차이. [Material Forge 참고 기록](docs/projects/material-forge.md)을 근거로 작성
 
 채택 범위와 변경 기록은 **컨벤션 적용 기준**에서 관리합니다. 나머지 분류와 각 문서의 후속·미결정 사항은 아직 채택된 규칙이 아닙니다.
 

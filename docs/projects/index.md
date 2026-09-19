@@ -9,6 +9,7 @@
 ## 프로젝트 문서
 
 - [RnimanEngine](rniman-engine.md): 핵심 제약·컨벤션 적용 상태와 주요 원본 문서. 비공개 원본은 접근 권한이 필요하다.
+- [Material Forge](material-forge.md): HTML 기본 컨벤션의 로컬 참고 근거·프로젝트 제약·미반영 상태.
 
 ## 포함할 내용과 원본의 역할
 

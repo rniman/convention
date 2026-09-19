@@ -39,6 +39,8 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 - [RnimanEngine 프로젝트 기준](projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 링크
 - [위키와 프로젝트의 상호 반영](baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 새 결정의 위키 반영 절차 (채택)
 - [HLSL 셰이더 규칙](coding/hlsl.md): 단계별 파일과 `Main`, 명명·좌표 공간·공유 include (초안)
+- [HTML 기본 컨벤션](coding/html.md): 문서 골격·포맷·의미 있는 요소·입력·JSX 차이 (초안)
+- [Material Forge 참고 기록](projects/material-forge.md): HTML 초안의 로컬 근거와 프로젝트 적용 상태
 - [변경 검증과 결과 기록](quality/verification.md): 빌드·실행·화면·성능 확인
 - [원본과 생성물 관리](git/artifacts.md): 에셋·산출물·캐시 구분
 
