@@ -8,6 +8,8 @@
 
 ## 프로젝트 문서
 
+여러 Unity 프로젝트에서 검토할 공통안은 [Unity 목차](../unity/index.md)에 두며, 각 프로젝트의 구체적인 폴더 구조·예외·적용 상태는 이 분류에서 관리한다.
+
 - [RnimanEngine](rniman-engine.md): 핵심 제약·컨벤션 적용 상태와 주요 원본 문서. 비공개 원본은 접근 권한이 필요하다.
 - [Material Forge](material-forge.md): HTML 기본 컨벤션의 로컬 참고 근거·프로젝트 제약·미반영 상태.
 

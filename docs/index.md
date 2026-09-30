@@ -30,12 +30,14 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 
 다음 분류에는 **아직 채택하지 않은 초안과 후속 항목**이 있습니다.
 
+- [Unity](unity/index.md): 오브젝트·에셋 명명, 반복 번호와 기본 폴더 구조
 - [테스트·품질](quality/index.md): 테스트 범위, 회귀 검증과 품질 판단
 - [문서화](documentation/index.md): README, 사용 안내와 설계 결정 기록
 - [프로젝트별 규칙](projects/index.md): 프로젝트별 설계, 구성·빌드와 공통 규칙의 예외
 
 ## 적용 절차와 검토 중인 문서
 
+- [Unity 오브젝트·에셋 이름과 폴더 구조](unity/organization.md): PascalCase·구분자, 반복 이름, 폴더와 참조 보존 (초안)
 - [RnimanEngine 프로젝트 기준](projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 링크
 - [위키와 프로젝트의 상호 반영](baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 새 결정의 위키 반영 절차 (채택)
 - [HLSL 셰이더 규칙](coding/hlsl.md): 단계별 파일과 `Main`, 명명·좌표 공간·공유 include (초안)
