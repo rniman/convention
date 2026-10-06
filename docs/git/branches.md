@@ -1,6 +1,6 @@
 # Git 브랜치 명명 규칙
 
-[Git·협업 목차](index.md) · 관련: [커밋 메시지](commit-messages.md)
+[Git·협업 목차](index.md)
 
 상태: 채택 · 적용 범위: 개인 작업 브랜치 이름 · Git의 유효한 ref 이름 안에서 적용
 
@@ -51,6 +51,10 @@ git check-ref-format --branch fix/23-boss-health-bar
 ```
 
 Git은 개인 규칙보다 넓은 이름을 허용한다. 소문자·kebab-case·type 목록은 도구의 강제 규칙이 아닌 개인 선택이다. 기존 같은 이름이나 상위 ref와의 충돌 여부는 실제 생성 시 별도로 확인한다.
+
+## 관련 문서
+
+- [Git 커밋 메시지 규칙](commit-messages.md)
 
 ## 근거와 출처
 

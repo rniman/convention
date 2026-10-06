@@ -29,6 +29,10 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 
 문서를 추가하면 해당 분류의 `index.md`와 `mkdocs.yml`에 등록합니다. `docs/`의 Markdown을 직접 사용하고, 빌드 결과는 Git에서 제외된 `site/`에 생성합니다. 원문의 `ref/` 링크는 보존하며 사이트에서는 [site_hooks.py](scripts/site_hooks.py)가 로컬 참고 자료 표시로 바꿉니다.
 
+사이트 제목·본문·메뉴는 **Pretendard Variable v1.3.9**를 사용하고, 코드 예제는 테마의 고정폭 글꼴을 유지합니다. [typography.css](docs/stylesheets/typography.css)에서 적용하며, 글꼴은 `docs/assets/fonts/pretendard/`에 포함해 사이트에서 직접 제공합니다. 공식 [웹폰트·font-family 안내](https://github.com/orioncactus/pretendard/blob/v1.3.9/packages/pretendard/README.md#웹폰트)와 [v1.3.9 배포](https://github.com/orioncactus/pretendard/releases/tag/v1.3.9)를 확인했고(2026-10-06), 원본 글꼴과 [SIL Open Font License 1.1](docs/assets/fonts/pretendard/license.txt)을 함께 보존합니다.
+
+라이선스 확인(2026-10-06): [공식 라이선스의 조건 1–5](https://github.com/orioncactus/pretendard/blob/v1.3.9/LICENSE)와 [OFL FAQ 2.1](https://openfontlicense.org/ofl-faq/#2-using-ofl-fonts-for-webpages-and-online-webfont-services)에 따라 웹폰트 사용과 원본 재배포가 허용됩니다. 저작권 고지·라이선스 전문을 글꼴과 함께 배포하고, 글꼴에는 OFL 1.1을 유지합니다. 글꼴 단독 판매는 허용되지 않으며, 수정본에는 Reserved Font Name 제한이 적용됩니다. 포함한 글꼴·라이선스는 공식 원본과 SHA-256이 일치하고 글꼴 데이터는 수정하지 않았습니다. [원본 경로와 해시](docs/assets/fonts/pretendard/source.txt)를 기록했으며, 빌드 결과에도 글꼴·고지·라이선스를 포함합니다.
+
 ## 로컬 미리보기와 검증
 
 Windows PowerShell에서 저장소 루트를 기준으로 실행합니다.

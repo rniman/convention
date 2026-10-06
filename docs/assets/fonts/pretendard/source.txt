@@ -1,0 +1,20 @@
+Pretendard Variable v1.3.9
+
+확인일: 2026-10-06
+저작자: Kil Hyung-jin (길형진)
+라이선스: SIL Open Font License 1.1 (license.txt 원문 동봉)
+Reserved Font Name: Pretendard
+
+공식 배포:
+https://github.com/orioncactus/pretendard/releases/tag/v1.3.9
+
+글꼴 원본:
+https://github.com/orioncactus/pretendard/blob/v1.3.9/packages/pretendard/dist/web/variable/woff2/PretendardVariable.woff2
+SHA-256: 9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4
+
+라이선스 원본:
+https://github.com/orioncactus/pretendard/blob/v1.3.9/LICENSE
+SHA-256: d31ddd9f2bed32fd7e302a205cf2380ba0de6529152d239ef99cfb6f261bfc04
+
+글꼴과 라이선스는 공식 원본과 바이트 단위로 동일하다.
+저장 경로와 파일명만 변경했으며 글꼴 데이터·내부 이름·메타데이터는 수정하지 않았다.

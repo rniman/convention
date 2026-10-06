@@ -1,4 +1,4 @@
-"""Preserve local source links without publishing reference files."""
+"""Preserve local references and distinguish document metadata."""
 import re
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -19,3 +19,13 @@ def on_page_markdown(markdown, *, page, config, files):
         return match.group(0)
 
     return re.sub(r"\[([^\]\n]+)\]\(([^\s)]+)\)", replace_reference, markdown)
+
+
+def on_page_content(html, **kwargs):
+    return re.sub(
+        r"<p>(상태:.*?)</p>",
+        r'<p class="document-meta">\1</p>',
+        html,
+        count=1,
+        flags=re.DOTALL,
+    )

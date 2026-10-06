@@ -1,3 +1,11 @@
+/* Separate status, scope, and version information from the main text. */
+.md-typeset .document-meta {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+  line-height: 1.65;
+  margin: 0.5rem 0 1.2rem;
+}
+
 /* Keep group headings distinct from their document links. */
 .md-sidebar--primary .md-nav__item--nested > .md-nav__link {
   font-weight: 700;

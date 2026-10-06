@@ -1,6 +1,6 @@
 # Unity 오브젝트·에셋 이름과 폴더 구조
 
-[Unity 목차](index.md) · 관련: [적용 기준](../baseline.md), [원본과 생성물 관리](../git/artifacts.md), [프로젝트별 규칙](../projects/index.md)
+[Unity 목차](index.md)
 
 상태: 초안 · 작성일: 2026-09-30 · 적용 범위: 직접 관리하는 Unity GameObject, Prefab, Scene, 일반 에셋과 Assets 내부 폴더
 
@@ -140,6 +140,12 @@ Unity 6.0 문서에서 `StreamingAssets`는 `Assets` 바로 아래 위치를 요
 - Tag·Layer·Sorting Layer, Addressables 주소·그룹, ScriptableObject 종류별 명명.
 - C# 명명·포맷·수명 관리, assembly definition, 자동 검사·폴더 생성 도구.
 - 이번 범위에서 보류·폐기로 확정한 안은 없다. 기능별 폴더는 조건부 선택이며 폐기안이 아니다.
+
+## 관련 문서
+
+- [컨벤션 적용 기준](../baseline.md)
+- [원본과 생성물 관리 (초안)](../git/artifacts.md)
+- [프로젝트별 규칙](../projects/index.md)
 
 ## 근거와 출처
 

@@ -1,6 +1,6 @@
 # Git 커밋 메시지 규칙
 
-[Git·협업 목차](index.md) · 관련: [브랜치 명명](branches.md)
+[Git·협업 목차](index.md)
 
 상태: 채택 · 적용 범위: 직접 작성하는 커밋 메시지 · 형식 기준: Conventional Commits 1.0.0
 
@@ -123,6 +123,10 @@ chore: ignore build output directory
 ## 범위와 후속 사항
 
 팀 프로젝트에서는 명시된 팀 형식을 우선한다. 도구가 생성하는 merge·revert·fixup 메시지의 처리, squash·병합 전략, 자동 릴리스·검증 도구는 후속 주제다. 이 문서만으로 자동 메시지나 과거 이력을 일괄 변경하지 않는다.
+
+## 관련 문서
+
+- [Git 브랜치 명명 규칙](branches.md)
 
 ## 근거와 기존 방식의 변경점
 

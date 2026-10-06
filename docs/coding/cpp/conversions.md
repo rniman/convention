@@ -1,6 +1,6 @@
 # C++ 타입 변환과 범위 검사
 
-[C++ 목차](index.md) · 관련: [자료형 선택과 별칭](type-selection.md), [초기화](initialization.md), [const](const.md), [함수 매개변수·반환](functions.md), [소유권·수명](ownership.md)
+[C++ 목차](index.md)
 
 상태: 초안 · 적용 범위: 직접 작성하는 C++의 명시적 변환·숫자 범위 검사·산술의 안전 조건 · 작성일: 2026-10-06
 
@@ -112,6 +112,14 @@ std::optional<std::size_t> CalculateByteCount(std::size_t count, std::size_t str
 - 반복되는 범위 검사·변환 실패 보고는 실제 소비자가 생기면 공통화를 검토한다. 사용할 곳이 없는 범용 변환 라이브러리를 먼저 추가하지 않는다.
 - 초안 채택 여부와 공통 변환 오류 반환 방식은 미결정이다. 도구 설정·RTTI·예외 정책은 이 문서에서 결정하지 않는다.
 - 검증할 때는 0·최대 허용값·초과값·음수·곱셈 오버플로를 포함한다. 실수 변환은 경계·NaN·무한대·정밀도 손실을, 포인터 변환은 실제 객체·정렬·수명·쓰기 계약을 확인한다.
+
+## 관련 문서
+
+- [자료형 선택과 별칭 (초안)](type-selection.md)
+- [초기화 규칙](initialization.md)
+- [const 사용 규칙](const.md)
+- [함수 매개변수·반환 규칙](functions.md)
+- [소유권·수명 규칙](ownership.md)
 
 ## 근거와 출처
 

@@ -1,6 +1,6 @@
 # HTML 기본 컨벤션
 
-[코딩 목차](index.md) · 관련: [적용 기준](../baseline.md), [Material Forge 참고 기록](../projects/material-forge.md), [변경 검증](../quality/verification.md)
+[코딩 목차](index.md)
 
 상태: **초안** · 작성일: 2026-09-19 · 적용 범위: 브라우저용 HTML 문서와 UI 마크업. JSX 차이는 별도 절에서 다룬다. XHTML·이메일 HTML은 제외한다.
 
@@ -153,6 +153,12 @@ UI 변경 시 다음을 변경 범위에 맞게 확인한다(필수).
 - **미결정:** 공통 채택 여부, 들여쓰기 최종 선택, 줄 길이 수치, 지원 브라우저·버전, 자동 검사·포맷 도구, CSS·JavaScript 상세 규칙.
 - **보류·폐기:** 이번 작성에서 확정한 항목 없음.
 - **예외:** 기존 프로젝트의 배포 제약·프레임워크 문법은 적용 범위와 이유를 프로젝트 문서에 남긴다.
+
+## 관련 문서
+
+- [컨벤션 적용 기준](../baseline.md)
+- [Material Forge 참고 기록 (참조 초안)](../projects/material-forge.md)
+- [변경 검증과 결과 기록 (초안)](../quality/verification.md)
 
 ## 근거와 변경 기록
 

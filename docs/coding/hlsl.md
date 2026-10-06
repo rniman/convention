@@ -1,6 +1,6 @@
 # HLSL 셰이더 규칙
 
-[코딩 목차](index.md) · 관련: [C++ 명명](cpp/naming.md), [RnimanEngine 적용 상태](../projects/rniman-engine.md#hlsl-컨벤션-적용-상태)
+[코딩 목차](index.md)
 
 상태: 초안 · 작성일: 2026-09-18 · 적용 범위: 직접 작성하는 HLSL의 명명·파일 구성·컴파일 입출력 식별
 
@@ -61,6 +61,11 @@
 - 전역 리소스·sampler·constant buffer의 명명과 접두어, 레지스터 배치, 매크로·include guard 정책, 행렬 규약·메모리 배치, HLSL 포맷은 미결정이다. C++의 `g`·`m`·`s` 접두어를 자동 도입하지 않는다.
 - Mesh·Amplification 및 Raytracing 셰이더 라이브러리의 파일명·진입점은 후속 범위다. 여러 export를 갖는 라이브러리에 단일 `Main` 규칙을 강제하지 않는다.
 - 이번 범위에 보류·폐기로 결정한 안은 없다. 위 다중 진입점 방식은 조건부 예외이며 폐기안이 아니다.
+
+## 관련 문서
+
+- [명명 규칙](cpp/naming.md)
+- [RnimanEngine 적용 상태 (참조 초안)](../projects/rniman-engine.md#hlsl-컨벤션-적용-상태)
 
 ## 근거와 출처
 

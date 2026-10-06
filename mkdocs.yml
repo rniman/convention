@@ -7,6 +7,7 @@ site_description: C++ 코딩과 Git 협업을 위한 개인 개발 컨벤션
 site_dir: site
 docs_dir: docs
 extra_css:
+  - stylesheets/typography.css
   - stylesheets/navigation.css
 hooks:
   - scripts/site_hooks.py

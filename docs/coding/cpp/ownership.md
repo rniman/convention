@@ -1,6 +1,6 @@
 # C++ 소유권·수명 규칙
 
-[C++ 목차](index.md) · 관련: [const 사용 규칙](const.md), [헤더·include 규칙](headers.md)
+[C++ 목차](index.md)
 
 상태: 채택 · 적용 범위: C++ 객체와 자원의 소유·대여·해제 · 예제: C++14 이상
 
@@ -167,6 +167,11 @@ bool HasPositiveWidth(const std::weak_ptr<Texture>& texture)
 ## 프로젝트별 예외
 
 COM·DX12의 `ComPtr`, 메모리 풀, ECS 핸들, GPU 자원 해제 시점은 해당 환경의 수명 규약을 따른다. 범용 스마트 포인터 규칙만으로 외부 참조 계수나 비동기 사용 완료를 대신하지 않는다. 구체적인 조작 방법은 프로젝트별 문서에서 다룬다.
+
+## 관련 문서
+
+- [const 사용 규칙](const.md)
+- [헤더·include 규칙](headers.md)
 
 ## 근거와 출처
 
