@@ -51,11 +51,13 @@ nav:
       - 코딩 소개: coding/index.md
       - C++:
           - C++ 전체 목차: coding/cpp/index.md
-          - 명명: coding/cpp/naming.md
-          - 초기화: coding/cpp/initialization.md
           - 포맷: coding/cpp/formatting.md
-          - const: coding/cpp/const.md
+          - 명명: coding/cpp/naming.md
           - 주석: coding/cpp/comments.md
+          - 자료형 선택과 별칭 (초안): coding/cpp/type-selection.md
+          - 초기화: coding/cpp/initialization.md
+          - const: coding/cpp/const.md
+          - 타입 변환과 범위 검사 (초안): coding/cpp/conversions.md
           - 헤더·include: coding/cpp/headers.md
           - 함수 매개변수·반환: coding/cpp/functions.md
           - 소유권·수명: coding/cpp/ownership.md

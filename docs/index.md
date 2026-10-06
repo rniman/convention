@@ -8,7 +8,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 
 | 지금 하려는 작업 | 찾아볼 규칙 |
 | --- | --- |
-| 이름을 짓고 코드를 정리하기 | [명명](coding/cpp/naming.md) · [포맷](coding/cpp/formatting.md) |
+| 이름을 짓고 코드를 정리하기 | [포맷](coding/cpp/formatting.md) · [명명](coding/cpp/naming.md) |
 | 변수와 객체 만들기 | [초기화](coding/cpp/initialization.md) · [const](coding/cpp/const.md) |
 | 함수와 헤더 작성하기 | [함수 매개변수·반환](coding/cpp/functions.md) · [헤더·include](coding/cpp/headers.md) |
 | 코드의 의도 설명하기 | [주석](coding/cpp/comments.md) |
@@ -18,7 +18,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 ## 처음 읽는 순서
 
 1. [컨벤션 적용 기준](baseline.md)에서 적용 범위와 규칙 강도를 확인합니다.
-2. [C++ 목차](coding/cpp/index.md)에서 포맷·명명을 시작으로 관련 규칙을 읽습니다.
+2. [C++ 목차](coding/cpp/index.md)에서 포맷·명명·주석부터 값·타입, 파일·API·자원 관리 순으로 읽습니다. 초안은 채택 규칙과 구분해 검토합니다.
 3. [소유권·수명](coding/cpp/ownership.md)에서 자원 관리 규칙을, [Git·협업](git/index.md)에서 작업 기록 방식을 확인합니다.
 
 각 페이지의 `필수`, `권장`, `선택`을 구분해 적용합니다. 프로젝트의 별도 합의는 적용 기준에 따라 범위와 이유를 명시한 예외로 관리합니다.
@@ -37,6 +37,8 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 
 ## 적용 절차와 검토 중인 문서
 
+- [C++ 자료형 선택과 별칭](coding/cpp/type-selection.md): 표준·API 타입, 자체 별칭·강한 타입, 외부 데이터 계약 (초안)
+- [C++ 타입 변환과 범위 검사](coding/cpp/conversions.md): 목적별 캐스트, API 출력 인자, 숫자 변환·산술 범위 (초안)
 - [Unity 오브젝트·에셋 이름과 폴더 구조](unity/organization.md): PascalCase·구분자, 반복 이름, 폴더와 참조 보존 (초안)
 - [RnimanEngine 프로젝트 기준](projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 링크
 - [위키와 프로젝트의 상호 반영](baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 새 결정의 위키 반영 절차 (채택)
