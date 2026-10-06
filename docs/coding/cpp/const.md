@@ -96,7 +96,11 @@ private:
 `const`는 초기화 이후의 수정을 제한하며 실행 중 구한 값에도 사용할 수 있다. `constexpr` 변수는 컴파일 시점에 평가할 수 있는 초기값이 필요하다.
 
 ```cpp
-constexpr int MAX_RETRY_COUNT = 3;
+int GetRetryLimit()
+{
+	constexpr int retryLimit = 3;
+	return retryLimit;
+}
 ```
 
 컴파일 시점에 정하는 고정값에는 `constexpr`를 권장한다. 이름은 [상수 명명 규칙](naming.md#상수-명명)을 따른다.
@@ -126,3 +130,7 @@ Google은 지역 변수의 `const` 사용에 중립적이다. C++ Core Guideline
 출처 확인일: 2026-09-12.
 
 채택일: 2026-09-12. 명시된 적용 범위 안에서 채택하며, 후속 정리 대상은 제외한다.
+
+## 변경 기록
+
+- 2026-10-06: 상수 명명의 선언 범위 기준 개정에 맞춰 함수 내부의 `constexpr` 예제를 `retryLimit`으로 작성했다. 상수 명명의 상세 정의는 명명 문서에서 관리한다.
