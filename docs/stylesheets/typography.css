@@ -14,10 +14,53 @@
 
 :root {
   --md-text-font: "Pretendard Variable";
+  --md-code-font: "D2Coding";
+  --document-text-font-family: "RIDIBatang", "Noto Serif KR", "Batang", serif;
 }
 
 body {
   --md-text-font-family: var(--md-text-font), -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --md-code-font-family: var(--md-code-font), Consolas, "Malgun Gothic", monospace;
+}
+
+/* RIDI & Sandoll, SIL OFL 1.1: ../assets/fonts/ridibatang/license.txt */
+@font-face {
+  font-family: "RIDIBatang";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/ridibatang/ridibatang.otf") format("opentype");
+}
+
+/* NAVER Corporation, SIL OFL 1.1: ../assets/fonts/d2coding/license.txt */
+@font-face {
+  font-family: "D2Coding";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/d2coding/d2coding-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "D2Coding";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/d2coding/d2coding-bold.ttf") format("truetype");
+}
+
+.md-typeset {
+  font-family: var(--document-text-font-family);
+}
+
+.md-typeset :is(h1, h2, h3, h4, h5, h6, button, input, select, textarea),
+.md-typeset > h1 + p > a {
+  font-family: var(--md-text-font-family);
+}
+
+.md-typeset :is(code, pre, kbd, samp, .document-meta) {
+  font-family: var(--md-code-font-family);
+  font-variant-ligatures: none;
 }
