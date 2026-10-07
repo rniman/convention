@@ -41,7 +41,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 - [C++ 타입 변환과 범위 검사](coding/cpp/conversions.md): 목적별 캐스트, API 출력 인자, 숫자 변환·산술 범위 (초안)
 - [Unity 오브젝트·에셋 이름과 폴더 구조](unity/organization.md): PascalCase·구분자, 반복 이름, 폴더와 참조 보존 (초안)
 - [RnimanEngine 프로젝트 기준](projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 링크
-- [위키와 프로젝트의 상호 반영](baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 새 결정의 위키 반영 절차 (채택)
+- [위키의 적용과 프로젝트 근거 검토](baseline.md#위키의-적용과-프로젝트-근거-검토): 프로젝트의 위키 확인·적용과 위키 정비 시 프로젝트 조사 (채택)
 - [HLSL 셰이더 규칙](coding/hlsl.md): 단계별 파일과 `Main`, 명명·좌표 공간·공유 include (초안)
 - [HTML 기본 컨벤션](coding/html.md): 문서 골격·포맷·의미 있는 요소·입력·JSX 차이 (초안)
 - [Material Forge 참고 기록](projects/material-forge.md): HTML 초안의 로컬 근거와 프로젝트 적용 상태

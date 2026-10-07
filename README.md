@@ -10,7 +10,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 - [Git·협업 규칙](docs/git/index.md): 커밋 메시지, 브랜치 명명
 - [Unity 컨벤션 초안](docs/unity/index.md): 오브젝트·에셋 이름, 반복 번호와 기본 폴더 구조
 - [RnimanEngine 프로젝트 정리](docs/projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 문서 안내
-- [위키와 프로젝트의 상호 반영](docs/baseline.md#위키와-프로젝트의-상호-반영): 위키 우선 적용과 프로젝트의 새 결정 반영
+- [위키의 적용과 프로젝트 근거 검토](docs/baseline.md#위키의-적용과-프로젝트-근거-검토): 프로젝트의 위키 확인·적용과 위키 정비 시 프로젝트 조사
 - 공통화 초안: [검증 결과](docs/quality/verification.md) · [원본과 생성물](docs/git/artifacts.md)
 - [HTML 기본 컨벤션 초안](docs/coding/html.md): 문서 골격·포맷·입력·접근성·JSX 차이. [Material Forge 참고 기록](docs/projects/material-forge.md)을 근거로 작성
 
