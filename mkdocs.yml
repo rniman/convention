@@ -13,6 +13,7 @@ hooks:
   - scripts/site_hooks.py
 theme:
   name: material
+  custom_dir: overrides
   language: ko
   font: false
   palette:

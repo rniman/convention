@@ -1,3 +1,93 @@
+/* Balance the site title and compact header controls. */
+.wiki-header .md-header__inner {
+  min-height: 3rem;
+  gap: 0.2rem;
+}
+
+.wiki-header .md-header__title {
+  min-width: 0;
+  margin-right: 0.6rem;
+  margin-left: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.wiki-header .md-header__button {
+  margin: 0.1rem;
+  padding: 0.4rem;
+}
+
+.wiki-header .blog-return {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  min-height: 1.8rem;
+  margin: 0 0.2rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgb(255 255 255 / 8%);
+  color: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.wiki-header .blog-return .md-icon svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.wiki-header .blog-return:hover {
+  background-color: rgb(255 255 255 / 18%);
+}
+
+.wiki-header :is(.blog-return, .wiki-repository):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.wiki-title--compact {
+  display: none;
+}
+
+/* Change only the closed desktop search field, not the search results panel. */
+@media screen and (min-width: 60em) {
+  .wiki-header .md-search__inner {
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 44.984375em) {
+  .wiki-header .md-header__inner {
+    gap: 0;
+  }
+
+  .wiki-header .md-header__title {
+    margin: 0 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .wiki-header .md-header__button {
+    padding: 0.3rem;
+  }
+
+  .wiki-header .blog-return {
+    margin: 0 0.15rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .wiki-title--full,
+  .wiki-header .wiki-repository {
+    display: none;
+  }
+
+  .wiki-title--compact {
+    display: inline;
+  }
+}
+
 /* Separate status, scope, and version information from the main text. */
 .md-typeset .document-meta {
   color: var(--md-default-fg-color--light);

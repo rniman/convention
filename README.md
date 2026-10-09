@@ -24,12 +24,15 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 | `ref/` | 과거 개인 자료. 로컬에 보존하며 Git 추적·사이트 빌드에서 제외 |
 | [AGENTS.md](AGENTS.md) | 컨벤션 조사·편집 시 지킬 작업 지침 |
 | [mkdocs.yml](mkdocs.yml) | 사이트 설정과 탐색 메뉴 |
+| [overrides/](overrides/) | 사이트 테마의 사용자 지정 템플릿 |
 | [scripts/](scripts/) | 빌드·미리보기와 사이트 변환 처리 |
 | [.github/workflows/pages.yml](.github/workflows/pages.yml) | GitHub Pages 빌드·배포 |
 
 문서를 추가하면 해당 분류의 `index.md`와 `mkdocs.yml`에 등록합니다. `docs/`의 Markdown을 직접 사용하고, 빌드 결과는 Git에서 제외된 `site/`에 생성합니다. 원문의 `ref/` 링크는 보존하며 사이트에서는 [site_hooks.py](scripts/site_hooks.py)가 로컬 참고 자료 표시로 바꿉니다.
 
 사이트 글꼴은 [typography.css](docs/stylesheets/typography.css)에서 영역별로 지정합니다. 글꼴 원본을 `docs/assets/fonts/`에 포함해 사이트에서 직접 제공합니다.
+
+모든 페이지의 상단에는 위키 제목과 검색, [블로그](https://rniman.github.io/)로 돌아가는 `← 블로그` 버튼, 테마 전환, GitHub 저장소 아이콘을 표시합니다. 블로그 버튼은 같은 탭에서 이동합니다. 좁은 화면에서는 제목을 `컨벤션 위키`로 줄이고 GitHub 아이콘은 숨깁니다. 저장소 링크는 탐색 메뉴에서도 접근할 수 있습니다. [header.html](overrides/partials/header.html)은 Material for MkDocs 9.7.7의 헤더를 조정한 템플릿입니다. 테마 업그레이드 시 원본 헤더 변경도 확인합니다. 상단 배치와 반응형 표시는 [navigation.css](docs/stylesheets/navigation.css)에서 관리합니다. 공식 [템플릿 재정의 안내](https://squidfunk.github.io/mkdocs-material/customization/#overriding-partials)를 참고했습니다(확인일: 2026-10-09).
 
 | 영역 | 글꼴 | 출처·해시 | 라이선스 |
 | --- | --- | --- | --- |
