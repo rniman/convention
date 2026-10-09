@@ -2,7 +2,7 @@
 
 C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한 개인 개발 기준입니다.
 
-현재 **C++ 코딩 8개, Git 2개** 문서를 채택했습니다. 적용 범위와 변경 기록은 [컨벤션 적용 기준](baseline.md)에서 확인하세요.
+현재 **C++ 코딩 9개, Git 2개** 문서를 채택했습니다. 문서 안의 미결정 정책은 제외하며 적용 범위와 변경 기록은 [컨벤션 적용 기준](baseline.md)에서 확인하세요.
 
 ## 빠르게 찾아보기
 
@@ -10,6 +10,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 | --- | --- |
 | 이름을 짓고 코드를 정리하기 | [포맷](coding/cpp/formatting.md) · [명명](coding/cpp/naming.md) |
 | 변수와 객체 만들기 | [초기화](coding/cpp/initialization.md) · [const](coding/cpp/const.md) |
+| 사용자 정의 타입 설계하기 | [클래스·구조체](coding/cpp/classes.md) |
 | 함수와 헤더 작성하기 | [함수 매개변수·반환](coding/cpp/functions.md) · [헤더·include](coding/cpp/headers.md) |
 | 코드의 의도 설명하기 | [주석](coding/cpp/comments.md) |
 | 자원의 소유자와 수명 정하기 | [소유권·수명](coding/cpp/ownership.md) |
@@ -39,6 +40,8 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 
 - [C++ 자료형 선택과 별칭](coding/cpp/type-selection.md): 표준·API 타입, 자체 별칭·강한 타입, 외부 데이터 계약 (초안)
 - [C++ 타입 변환과 범위 검사](coding/cpp/conversions.md): 목적별 캐스트, API 출력 인자, 숫자 변환·산술 범위 (초안)
+- [클래스·구조체의 미결정 정책](coding/cpp/classes.md#미결정-정책): 생성 실패·소멸 진단·noexcept, 다형적 복제·복잡한 상속 (초안, 기본 규칙은 채택)
+- [C++ attribute 사용](coding/cpp/attributes.md): nodiscard의 언어 동작·다른 attribute의 목적과 사용 조건 (초안)
 - [Unity 오브젝트·에셋 이름과 폴더 구조](unity/organization.md): PascalCase·구분자, 반복 이름, 폴더와 참조 보존 (초안)
 - [RnimanEngine 프로젝트 기준](projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 링크
 - [위키의 적용과 프로젝트 근거 검토](baseline.md#위키의-적용과-프로젝트-근거-검토): 프로젝트의 위키 확인·적용과 위키 정비 시 프로젝트 조사 (채택)
@@ -48,7 +51,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 - [변경 검증과 결과 기록](quality/verification.md): 빌드·실행·화면·성능 확인
 - [원본과 생성물 관리](git/artifacts.md): 에셋·산출물·캐시 구분
 
-새 초안은 기존 채택 문서 10개에 포함하지 않습니다. 프로젝트별 정보와 원본 접근 안내는 해당 프로젝트 문서에서 확인합니다.
+새 초안은 채택 문서 11개에 포함하지 않으며 채택 문서의 미결정 정책도 적용 범위에서 제외합니다. 프로젝트별 정보와 원본 접근 안내는 해당 프로젝트 문서에서 확인합니다.
 
 ## 참고 자료 안내
 

@@ -6,7 +6,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 정리한 개인 개발 �
 
 ## 문서 찾아보기
 
-- [C++ 코딩 규칙](docs/coding/cpp/index.md): 포맷, 명명, 주석, 초기화, const, 헤더, 함수, 소유권·수명
+- [C++ 코딩 규칙](docs/coding/cpp/index.md): 포맷, 명명, 주석, 초기화, const, 클래스·구조체, 헤더, 함수, 소유권·수명
 - [Git·협업 규칙](docs/git/index.md): 커밋 메시지, 브랜치 명명
 - [Unity 컨벤션 초안](docs/unity/index.md): 오브젝트·에셋 이름, 반복 번호와 기본 폴더 구조
 - [RnimanEngine 프로젝트 정리](docs/projects/rniman-engine.md): 컨벤션 적용·핵심 제약과 주요 원본 문서 안내

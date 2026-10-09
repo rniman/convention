@@ -4,7 +4,7 @@
 
 상태: 채택 · 기준일: 2026-09-15
 
-현재 작성된 C++ 코딩 8개와 Git 2개, 총 10개 문서를 개인 개발의 기준으로 사용한다. 이 페이지는 적용 범위와 문서 위치를 안내하며 규칙 전문을 복제하지 않는다.
+현재 작성된 C++ 코딩 9개와 Git 2개, 총 11개 문서의 채택 범위를 개인 개발의 기준으로 사용한다. 문서 안에서 초안으로 표시한 추가 검토 절은 제외한다. 이 페이지는 적용 범위와 문서 위치를 안내하며 규칙 전문을 복제하지 않는다.
 
 ## 적용 문서
 
@@ -15,13 +15,14 @@
 | 코딩 | [주석](coding/cpp/comments.md) | 구현 설명·API 문서·작업 메모 |
 | 코딩 | [초기화](coding/cpp/initialization.md) | 초기값·생성자 선택·축소 변환 |
 | 코딩 | [const](coding/cpp/const.md) | 읽기 전용 의도와 const 적용 |
+| 코딩 | [클래스·구조체](coding/cpp/classes.md) | 타입 선택·공개 API, 생성자·특수 멤버·기본 상속. 미결정 정책 절 제외 |
 | 코딩 | [헤더·include](coding/cpp/headers.md) | 헤더 독립성·직접 의존성 |
-| 코딩 | [함수 매개변수·반환](coding/cpp/functions.md) | 입력·입출력·결과 전달 |
+| 코딩 | [함수 매개변수·반환](coding/cpp/functions.md) | 입력·입출력·결과 전달, 구조체·pair·tuple 선택, 의도적 결과 무시 |
 | 코딩 | [소유권·수명](coding/cpp/ownership.md) | 소유·대여·스마트 포인터 전달 |
 | Git | [커밋 메시지](git/commit-messages.md) | 형식·type·언어·호환성 변경 |
 | Git | [브랜치 명명](git/branches.md) | 작업 목적·이슈 번호·릴리스 이름 |
 
-채택 규칙은 포맷·명명·주석, 초기화·const, 헤더·함수·소유권 순으로 읽는다. 자료형 선택과 타입 변환 초안의 위치는 [C++ 목차](coding/cpp/index.md)를 따르며, 위 채택 범위와 구분해 검토한다.
+채택 규칙은 포맷·명명·주석, 초기화·const·클래스·구조체, 헤더·함수·소유권 순으로 읽는다. 자료형 선택·타입 변환·attribute 초안의 위치는 [C++ 목차](coding/cpp/index.md)를 따르며, 위 채택 범위와 구분해 검토한다.
 
 ## 적용 방식
 
@@ -91,6 +92,8 @@
 | --- | --- |
 | [C++ 자료형 선택과 별칭](coding/cpp/type-selection.md) | 공통 초안. 표준·외부 API 타입, 자체 별칭의 도입 조건, 강한 타입, 외부 데이터 계약 |
 | [C++ 타입 변환과 범위 검사](coding/cpp/conversions.md) | 공통 초안. 목적별 캐스트, API 출력 인자, 숫자 변환·산술 범위 |
+| [클래스·구조체의 미결정 정책](coding/cpp/classes.md#미결정-정책) | 본문의 기본 규칙은 채택. 생성 실패·소멸 진단·noexcept, 다형적 복제·복잡한 상속은 초안이며 채택에서 제외 |
+| [attribute 사용](coding/cpp/attributes.md) | C++ 공통 초안. nodiscard의 언어 동작·다른 attribute의 목적·버전·계약과 확장 구분 |
 | [Unity 오브젝트·에셋 이름과 폴더 구조](unity/organization.md) | Unity 공통 초안. 명명·구분자·반복 번호·폴더 구조·참조 보존. 버전 공통 고정과 C# 규칙은 제외 |
 | [RnimanEngine 프로젝트 기준](projects/rniman-engine.md) | 참조 초안. D3D12 초기 구현 선택과 프레임 동기화 전환은 사용자 결정에 따라 프로젝트 한정 채택하며 시험 적용과 구분 |
 | [HLSL 셰이더 규칙](coding/hlsl.md) | 공통 초안. 명명·좌표 공간·단계별 파일·진입점·공유 include·산출물 구분 |
@@ -99,11 +102,18 @@
 | [변경 검증과 결과 기록](quality/verification.md) | 공통 초안. 변경 범위와 빌드·실행·화면·성능 검증 |
 | [원본과 생성물 관리](git/artifacts.md) | 공통 초안. 재현 가능한 원본과 생성물의 구분 |
 
-새 초안은 채택 문서 10개에 포함하지 않는다. 프로젝트에서 이미 적용한 선택도 공통 규칙의 자동 채택 근거로 사용하지 않는다. 초안의 필수·권장·선택은 채택 시의 제안 강도다.
+새 초안은 채택 문서 11개에 포함하지 않는다. 채택 문서 안의 미결정 정책도 적용 범위에서 제외한다. 프로젝트에서 이미 적용한 선택도 공통 규칙의 자동 채택 근거로 사용하지 않는다. 초안의 필수·권장·선택은 채택 시의 제안 강도다.
 
 ## 변경 기록
 
 날짜별 핵심 결정과 적용 상태를 요약한다. 상세 규칙·근거·검증 기록은 연결한 문서에서 확인한다.
+
+### 2026-10-09
+
+- **함수 규칙 개정:** 사용자 선택으로 [구조체·pair·tuple의 선택](coding/cpp/functions.md#구조체와-pairtuple의-선택)과 [의도적 결과 무시](coding/cpp/functions.md#의도적인-반환값-무시)의 조건·표기를 채택했다. `(void)`를 권장 기본으로 두고 표기 생략·대체 표기의 허용 범위를 정했으며, 기존 nodiscard 기준을 보강했다. 오류 처리·진단 설정은 프로젝트별 결정으로 유지한다.
+- **클래스·구조체 채택:** 사용자 선택으로 [기본 규칙](coding/cpp/classes.md)을 채택했다. override·조건부 final은 권장, 병기는 허용하며 접근 구역의 필요한 반복·권장 선언 순서·수명 의존성 확인을 구분했다. 초기화·const·포맷의 상세 규칙은 현재 위치를 유지하고 링크는 필요한 지점에만 둔다. 생성 실패·소멸 진단·noexcept, 다형적 복제·복잡한 상속은 [미결정 정책](coding/cpp/classes.md#미결정-정책)으로 남겨 채택에서 제외했다.
+- **초안 추가:** [attribute 사용](coding/cpp/attributes.md)의 목적·언어 버전·적용 조건과 컴파일러 확장 구분을 정리했다. 함수 문서의 기존 채택 규칙과 구분하며 초안 상태를 유지한다.
+- **프로젝트 근거 확인:** RnimanEngine의 [기존 반환값·attribute 사용과 미적용 후보](projects/rniman-engine.md#반환값과-attribute-확인), [클래스·구조체와 복사·이동 선언](projects/rniman-engine.md#클래스구조체-규칙의-근거)을 기록했다. 엔진 코드·설정은 변경하지 않았다.
 
 ### 2026-10-07
 
@@ -112,8 +122,11 @@
 
 ### 2026-10-06
 
+- **프로젝트 구조 적용:** [RnimanEngine 앱 실행부 분리](projects/rniman-engine.md#앱-실행부-분리의-프로젝트-적용)에 Main·SandboxApp의 책임과 자원 소유·종료 순서를 기록했다. 범용 Application 정책으로 확대하지 않는다.
+- **프로젝트 구조 적용:** [RnimanEngine 창·입력 분리](projects/rniman-engine.md#창입력-분리의-프로젝트-적용)에 창 소유 상태·프레임 입력 소비·수명 경계를 기록했다. Sandbox 한정 구현이며 공통 Input·Scene 정책으로 확대하지 않는다.
+- **프로젝트 적용 결과:** [RnimanEngine](projects/rniman-engine.md#코드-가독성-적용)에 지역 상수 명명·포맷·헤더·API 주석의 채택 규칙을 적용하고 CPU 크기·span 인덱스의 표준 타입 사용을 시험 적용했다. 자료형·변환 초안의 공통 채택 상태는 변경하지 않았다.
 - **채택 규칙 개정:** [상수 명명](coding/cpp/naming.md#상수-명명)을 `const`·`constexpr` 구분 없이 선언 범위 기준으로 변경하고 [const 예제](coding/cpp/const.md#const와-constexpr)를 맞췄다.
-- **초안 추가:** [자료형 선택과 별칭](coding/cpp/type-selection.md), [타입 변환과 범위 검사](coding/cpp/conversions.md)를 분리 작성했다. [RnimanEngine 확인 상태](projects/rniman-engine.md#자료형과-변환-초안의-확인-상태)는 코드 대조와 미적용 범위를 기록하며 공통 채택을 뜻하지 않는다.
+- **초안 추가:** [자료형 선택과 별칭](coding/cpp/type-selection.md), [타입 변환과 범위 검사](coding/cpp/conversions.md)를 분리 작성했다. [RnimanEngine 적용 상태](projects/rniman-engine.md#자료형과-변환-초안의-확인-상태)는 코드 대조와 제한된 시험 적용 범위를 기록하며 공통 채택을 뜻하지 않는다.
 - **사이트·문서 정리:** 제목·본문·메뉴에 Pretendard Variable v1.3.9를 적용하고 원본·SIL OFL 1.1·출처·해시를 포함했다. 코드 글꼴은 유지했다. 목차·메뉴·상태 표시를 정리하고 명명 문서와 변경 기록의 중복을 줄였다.
 
 ### 2026-10-05
