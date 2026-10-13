@@ -2,7 +2,7 @@
 
 [프로젝트별 목차](index.md)
 
-상태: 참조 초안(초기 구현·프레임 동기화만 프로젝트 한정 채택하며 나머지는 시험 적용·확인 기록) · 정리일: 2026-10-10
+상태: 참조 초안(초기 구현·프레임 동기화만 프로젝트 한정 채택하며 나머지는 시험 적용·확인 기록) · 정리일: 2026-10-13
 
 D3D12 미니 게임 엔진의 전용 기준·제약과 적용 상태를 요약한다. 대상은 Windows·MSVC·C++20·x64의 현재 Sandbox와 관련 Smoke 테스트다. 구현·빌드·실행·검증 상세는 비공개 프로젝트 저장소에서 관리한다.
 
@@ -73,9 +73,30 @@ Debug 레이어 필수, VSync·두 백 버퍼도 시험 적용이다. Debug 앱�
 
 ### 큐브 출력의 시험 적용
 
-CPU·셰이더의 해석을 맞추기 위해 행 벡터 WVP·`row_major`·`mul(position, matrix)`, 왼손 View·Projection, 시계 방향 앞면을 사용한다. 전체 창 Viewport·현재 종횡비 Projection을 사용하며 단일 Direct Queue의 D32 버퍼는 매 프레임 지우고 전체 GPU 대기 후 재생성한다.
+행렬 전달·축은 아래 [확인 기록](#좌표축과-행렬-전달의-확인)을 따른다. 시계 방향 앞면·전체 창 Viewport·현재 종횡비 Projection을 사용하며 단일 Direct Queue의 D32 버퍼는 매 프레임 지우고 전체 GPU 대기 후 재생성한다.
 
 Upload Heap에서 직접 읽는 방식은 작은 고정 큐브 메시의 초기 구현 선택이다. 범용 메시 로딩 도입 시 Default Heap 업로드를 검토한다.
+
+### 좌표축과 행렬 전달의 확인
+
+상태: **현재 Sandbox의 시험 적용·확인 기록** · 확인일: 2026-10-13. 공통 기준은 [좌표축과 행렬 규약](../coding/coordinates-and-matrices.md)을 따르며, 아래는 로컬 구현과 대조한 근거다.
+
+| 대상 | 확인한 구현·범위 |
+| --- | --- |
+| 월드·카메라 축 | 카메라 상하는 월드 `+Y`, yaw·pitch가 0일 때 전방은 `+Z`·오른쪽은 `+X`. 현재 카메라 전방은 회전된 벡터이며 월드 `+Z`와 구분 |
+| View·Projection | `XMMatrixLookToLH`·`XMMatrixPerspectiveFovLH`의 왼손 규약 사용 |
+| World·WVP | 부모 없는 Transform의 `S * R * T`, `World * View * Projection` |
+| CPU 저장·업로드 | `CreateRenderObject`에서 `XMStoreFloat4x4`로 저장하고 렌더러가 구조체를 그대로 복사 |
+| HLSL 선언·연산 | CubeVS의 WVP·World·법선 행렬 모두 명시적 `row_major`. 위치·법선은 벡터를 첫 인자로 `mul` 호출 |
+| 법선 | World 역전치를 계산한 뒤 행 우선 저장. 법선용 역전치와 패킹을 맞추기 위한 전치를 구분 |
+| Constant Buffer | `RenderObject`의 192바이트 크기와 World·법선 필드의 64·128바이트 offset을 CPU에서 static_assert. 오브젝트별 영역은 256바이트 stride |
+| 빌드 선언 | Windows SDK 10.0.26100.0·FXC·SM5.0·`Main`. 공유 `CubeShaders.props`에는 별도 기본 행렬 패킹 지정이 없고 소스의 각 선언으로 명시 |
+
+거리 단위·외부 에셋의 규격은 이번 카메라·행렬 대조의 확인 범위 밖이다. 모델 가져오기·부모 Transform·다른 수학 라이브러리 도입 시 경계 규약을 재검토한다. 법선용 World는 현재 유한한 아핀 행렬·양수 행렬식·유한한 역행렬을 요구하며 반전 Transform의 컬링 보정은 제공하지 않는다.
+
+이번 확인은 로컬 `D:/STUDY/DirectX12/RnimanEngine`의 HEAD [cee7605](https://github.com/rniman/RnimanEngine/commit/cee760528b33f0353d63580030fa21f839a74713)·미커밋 변경 없음 상태에서 수행했다. 엔진 코드·설정·적용 기록은 변경하지 않았고 원격 최신 상태·빌드·GPU 실행은 이번 확인 범위 밖이다. 위키의 채택과 프로젝트 적용 상태는 구분한다.
+
+원본: [개발 문서 — 큐브 렌더링 계약](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/docs/development.md#큐브-렌더링-계약) · [RenderData](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/Sandbox/RenderData.h) · [Transform](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/Sandbox/Transform.h) · [SandboxCamera](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/Sandbox/SandboxCamera.h) · [CubeVS](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/Shaders/Samples/Sandbox/CubeVS.hlsl) · [공유 셰이더 빌드](https://github.com/rniman/RnimanEngine/blob/cee760528b33f0353d63580030fa21f839a74713/Sandbox/CubeShaders.props).
 
 ### 카메라 입력과 여러 Transform의 시험 적용
 
@@ -89,7 +110,7 @@ Upload Heap에서 직접 읽는 방식은 작은 고정 큐브 메시의 초기 
 
 ### HLSL 컨벤션 적용 상태
 
-[HLSL 규칙](../coding/hlsl.md)은 **공통 초안**이다. 현재 Cube 셰이더는 단계별 파일·`Main` 진입점, FXC·SM5.0, EXE 기준 CSO 로딩을 사용하며 Sandbox·RendererSmoke가 빌드 설정을 공유한다. 작업 디렉터리에 의존하지 않도록 EXE 옆 셰이더를 함께 배포한다. 공유 HLSLI·공간 접미어·변형별 출력은 필요 시 검토하고 SM6 도입 시 DXC 전환을 검토한다.
+[HLSL 규칙](../coding/hlsl.md)은 **공통 초안**이다. 현재 Cube 셰이더는 단계별 파일·`Main` 진입점, FXC·SM5.0, EXE 기준 CSO 로딩을 사용하며 Sandbox·RendererSmoke가 빌드 설정을 공유한다. 2026-10-13 확인에서 CubeVS의 월드 위치·법선은 `positionWS`·`normalWS`로 공간을 표시하며, 행렬 전달은 [별도 확인 기록](#좌표축과-행렬-전달의-확인)을 따른다. 작업 디렉터리에 의존하지 않도록 EXE 옆 셰이더를 함께 배포한다. 공유 HLSLI·변형별 출력은 필요 시 검토하고 SM6 도입 시 DXC 전환을 검토한다.
 
 ### 자료형과 변환 초안의 확인 상태
 
@@ -159,6 +180,11 @@ Upload Heap에서 직접 읽는 방식은 작은 고정 큐브 메시의 초기 
 - [컨벤션 적용 기준](../baseline.md)
 
 ## 변경 기록
+
+### 2026-10-13
+
+- 로컬 좌표축·World/WVP·법선 역전치·CPU 저장·CubeVS 선언과 빌드 설정을 대조하고 [공통 채택 규칙](../coding/coordinates-and-matrices.md)으로 연결했다. 기존 시험 적용·확인 범위는 유지한다.
+- 반복 설명과 같은 날의 변경 기록을 통합했다. 엔진 코드·설정·적용·실행 검증 기록은 변경하지 않았다.
 
 ### 2026-10-10
 
