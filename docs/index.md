@@ -2,16 +2,17 @@
 
 C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한 개인 개발 기준입니다.
 
-현재 **C++ 코딩 9개, Git 2개, 좌표축·행렬 1개**, 총 12개 문서에 채택 범위가 있습니다. 문서 안의 초안·미결정 정책은 제외하며 적용 범위와 변경 기록은 [컨벤션 적용 기준](baseline.md)에서 확인하세요.
+현재 **C++ 코딩 11개, Git 2개, 좌표축·행렬 1개**, 총 14개 문서에 채택 범위가 있습니다. 문서 안의 초안·미결정 정책은 제외하며 적용 범위와 변경 기록은 [컨벤션 적용 기준](baseline.md)에서 확인하세요.
 
 ## 빠르게 찾아보기
 
 | 지금 하려는 작업 | 찾아볼 규칙 |
 | --- | --- |
-| 이름을 짓고 코드를 정리하기 | [포맷](coding/cpp/formatting.md) · [명명](coding/cpp/naming.md) |
-| 변수와 객체 만들기 | [초기화](coding/cpp/initialization.md) · [const](coding/cpp/const.md) |
+| 이름을 짓고 코드를 정리하기 | [포맷](coding/cpp/formatting.md) · [명명](coding/cpp/naming.md) · [네임스페이스](coding/cpp/naming.md#네임스페이스) |
+| 변수와 객체 만들기 | [auto 사용](coding/cpp/auto.md) · [초기화](coding/cpp/initialization.md) · [const](coding/cpp/const.md) |
 | 사용자 정의 타입 설계하기 | [클래스·구조체](coding/cpp/classes.md) |
 | 함수와 헤더 작성하기 | [함수 매개변수·반환](coding/cpp/functions.md) · [헤더·include](coding/cpp/headers.md) |
+| C++ 파일·프로젝트 구성 정리하기 | [프로젝트 구조와 파일 배치](coding/cpp/project-structure.md) |
 | 코드의 의도 설명하기 | [주석](coding/cpp/comments.md) |
 | 자원의 소유자와 수명 정하기 | [소유권·수명](coding/cpp/ownership.md) |
 | 좌표축 정하기·CPU와 셰이더의 행렬 해석 맞추기 | [좌표축과 행렬 규약](coding/coordinates-and-matrices.md) |
@@ -27,7 +28,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 
 ## 전체 목차
 
-- [코딩](coding/index.md): C++ 명명, 포맷, 언어 사용과 소유권·수명 · DirectXMath↔HLSL 행렬 규약 · HLSL 셰이더 초안
+- [코딩](coding/index.md): C++ 명명, 포맷, 소스 구성, 언어 사용과 소유권·수명 · DirectXMath↔HLSL 행렬 규약 · HLSL 셰이더 초안
 - [Git·협업](git/index.md): 커밋 메시지와 브랜치 명명
 
 다음 분류에는 **아직 채택하지 않은 초안과 후속 항목**이 있습니다.
@@ -52,7 +53,7 @@ C++ 코드와 Git 작업에서 반복되는 선택을 일관되게 하기 위한
 - [변경 검증과 결과 기록](quality/verification.md): 빌드·실행·화면·성능 확인
 - [원본과 생성물 관리](git/artifacts.md): 에셋·산출물·캐시 구분
 
-새 초안은 채택 범위가 있는 문서 12개에 포함하지 않으며 채택 문서 안의 초안·미결정 정책도 적용 범위에서 제외합니다. 프로젝트별 정보와 원본 접근 안내는 해당 프로젝트 문서에서 확인합니다.
+새 초안은 채택 범위가 있는 문서 14개에 포함하지 않으며 채택 문서 안의 초안·미결정 정책도 적용 범위에서 제외합니다. 프로젝트별 정보와 원본 접근 안내는 해당 프로젝트 문서에서 확인합니다.
 
 ## 참고 자료 안내
 

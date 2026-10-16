@@ -31,6 +31,38 @@ D3D12 미니 게임 엔진의 전용 기준·제약과 적용 상태를 요약�
 | PCH·헤더 | Sandbox 구현 파일은 PCH를 먼저 포함하며 두 Smoke는 PCH 없이 구현을 컴파일 | 프로젝트의 PCH 요구에 따른 첫 include 예외. [헤더 독립성·직접 include](../coding/cpp/headers.md)는 유지 |
 | 파일 형식 | C++ 소스는 [UTF-8·LF](../coding/cpp/formatting.md), Windows 명령 스크립트는 CRLF | 스크립트의 Windows 도구 사용을 위한 파일 형식 예외 |
 
+## 소스 배치와 탐색 구조의 검토
+
+상태: **확인 기록과 재배치 초안** · 확인일: 2026-10-14 · 대상: 원격 `main`의 구조 문서·Sandbox 프로젝트·필터·두 Smoke 프로젝트. 코드를 실행하거나 로컬 Visual Studio 표시를 확인한 것은 아니다.
+
+[구조 문서](https://github.com/rniman/RnimanEngine/blob/main/docs/project-structure.md#현재-프로젝트와-코드)와 [Sandbox 빌드 입력](https://github.com/rniman/RnimanEngine/blob/main/Sandbox/Sandbox.vcxproj)을 대조했다. 앱·창·렌더러·자원 로딩·변환의 소스와 헤더가 `Sandbox/` 바로 아래에 있으며, [필터 파일](https://github.com/rniman/RnimanEngine/blob/main/Sandbox/Sandbox.vcxproj.filters)은 파일 항목만 나열하고 기능별 `Filter`를 정의하지 않는다. 단일 프로젝트라는 점과 실제 파일·표시가 평면 배치라는 점을 구분한다.
+
+[RendererSmoke](https://github.com/rniman/RnimanEngine/blob/main/Tests/RendererSmoke.vcxproj)는 Sandbox의 `D3D12Renderer.cpp`·`AssetLoader.cpp`를, [WindowSmoke](https://github.com/rniman/RnimanEngine/blob/main/Tests/WindowSmoke.vcxproj)는 `Win32Window.cpp`를 직접 빌드한다. 두 테스트의 include 기준도 현재 `Sandbox/`다. 폴더 이동만으로도 이 참조 경로를 함께 갱신해야 한다. Sandbox는 PCH 생성·사용 설정을 유지하며 테스트는 PCH 없이 컴파일하는 현재 차이를 보존해야 한다.
+
+### 기능별 배치 후보
+
+후보 개정일: 2026-10-16. 아래는 [공통 프로젝트 구조·파일 배치 규칙](../coding/cpp/project-structure.md)의 프로젝트 바로 아래 주제별 배치를 구체화한 **프로젝트 전용 후보**다. 실제 재배치 결과가 아니며 개별 기능 폴더의 이름·경로·책임 경계는 미결정이다. 헤더와 대응 구현 파일을 함께 두고 필터에도 같은 기능 분류를 표시하는 방향을 제안한다.
+
+| 후보 위치 | 대상 | 분류 이유·재검토 조건 |
+| --- | --- | --- |
+| `Sandbox/Main.cpp` | 기존 `Main.cpp` | 실행 진입점의 현재 위치 유지 |
+| `Sandbox/App/` | `SandboxApp.h/.cpp`, `SandboxCamera.h`, `SandboxLighting.h` | 데모 실행·입력 해석·카메라·조명 상태. 범용 엔진 기능으로 바뀌면 다시 분류 |
+| `Sandbox/Platform/` | `Win32Window.h/.cpp` | Win32 창·메시지·입력 수집 |
+| `Sandbox/Assets/` | `AssetLoader.h/.cpp`, `ImageData.h` | CPU 이미지 로딩·표현. 저장소 루트의 원본 에셋 `Assets/`와 코드 폴더를 경로로 구분 |
+| `Sandbox/Rendering/` | `D3D12Renderer.h/.cpp`, `RenderData.h` | GPU 렌더링과 렌더 입력 계약. D3D12 외 구현을 도입하면 API 전용 하위 분류 검토 |
+| `Sandbox/Math/` | `Transform.h` | 변환 수학. 렌더링 전용 계약인지 공용 수학인지 실제 사용 범위로 재검토 |
+| 기존 `Sandbox/` | `pch.h/.cpp`, `CubeShaders.props`, 프로젝트·필터 파일 | 우선 현재 PCH·빌드 설정 위치 유지. 공통 최종 위치 규칙으로 확정하지 않음 |
+
+이 후보에서는 include 기준을 기존 `Sandbox/`로 유지하는 방향을 검토하고 PCH의 현재 위치도 유지한다. 테스트의 원본 참조·include와 소스의 include 표기를 새 기능 경로에 맞춘다. 별도 코드 루트가 필요한 이유가 생기면 `src/` 도입을 검토한다. 셰이더 공유 설정, 에셋 복사와 EXE 기준 실행 경로는 이동 영향이 있는지 확인한다. 실제 적용 시 x64 Debug·Release에서 영향받는 세 프로젝트의 빌드와 Smoke 실행·Sandbox 실행을 확인해야 한다.
+
+원본의 [향후 확장 구조](https://github.com/rniman/RnimanEngine/blob/main/docs/project-structure.md#향후-확장-구조)는 공용 기능이 필요할 때 Engine 라이브러리를 분리하는 목표다. 이 초안은 먼저 Sandbox 내부의 물리적 배치와 필터를 정리하는 후보이며 기능 폴더별 별도 `.vcxproj`·Engine 라이브러리 전환을 확정하지 않는다. 현재 확인한 앱과 테스트의 공유만으로 공용 API 범위가 확정되지는 않는다.
+
+### 솔루션 전체의 확장 검토
+
+상태: **계획 대조와 초안** · 확인일: 2026-10-15. 원격 `main`의 [향후 확장 구조](https://github.com/rniman/RnimanEngine/blob/main/docs/project-structure.md#향후-확장-구조)와 [외부 라이브러리·도구](https://github.com/rniman/RnimanEngine/blob/main/docs/dependencies.md#외부-라이브러리와-도구)를 확인했다. Engine·Samples·Tools·ThirdParty 분류는 기존 확장 방향이며 외부 라이브러리 후보 표는 실제 도입 목록이 아니다.
+
+새 [솔루션 역할별 분류 기준](../coding/cpp/project-structure.md#솔루션의-프로젝트-구성)은 이 확장 방향과 함께 검토할 수 있다. 현재 루트의 Sandbox 경로·두 Smoke 배치를 유지하면서 필요할 때 솔루션 폴더로 앱·테스트를 묶을 수 있다. 실제 엔진 라이브러리·샘플·도구와 외부 빌드 타깃이 생기면 해당 역할에 연결한다. 써드파티 원본, 엔진·앱의 연동 코드와 직접 작성한 빌드 설정의 상세 기준은 [공통 규칙](../coding/cpp/project-structure.md#써드파티-원본과-연동-코드) 한곳에서 관리한다. 구체적인 분리·설치·재배치는 수행하거나 확정하지 않았다.
+
 ## 프로젝트 한정 채택과 적용
 
 ### D3D12 초기 구현 선택
@@ -180,6 +212,18 @@ Upload Heap에서 직접 읽는 방식은 작은 고정 큐브 메시의 초기 
 - [컨벤션 적용 기준](../baseline.md)
 
 ## 변경 기록
+
+### 2026-10-16
+
+- 사용자 요청에 맞춰 재배치 후보를 `Sandbox/` 바로 아래의 주제별 폴더로 수정했다. `Main.cpp`·PCH의 현재 위치와 기존 include 기준을 유지하는 방향으로 예시를 맞추고 `src/`는 선택으로 남겼다. 공통 소스 배치 규칙의 채택을 반영하되 구체적인 기능 분류·API·분리 시점은 프로젝트별 결정으로 남긴다. 이는 문서의 후보 개정이며 실제 엔진 파일·설정·빌드·실행의 적용 결과가 아니다.
+
+### 2026-10-15
+
+- 원격 `main`의 프로젝트 확장 구조와 외부 의존성 후보의 상태를 대조하고, 솔루션 역할별 분류·써드파티 연동 관리의 공통 초안을 연결했다. 기존 계획을 실제 적용·도입으로 바꾸지 않았으며 코드·설정·패키지는 변경하지 않았다.
+
+### 2026-10-14
+
+- 원격 `main`의 구조·Sandbox 프로젝트·필터·두 Smoke 빌드 입력을 대조하여 실제 평면 배치와 원본 구현의 직접 참조를 기록했다. 기능별 실제 폴더·헤더와 구현의 동시 배치 후보를 초안으로 추가하고 공통 소스 배치 초안과 연결했다. 파일 이동·프로젝트 설정 변경·엔진 빌드·실행은 수행하지 않았다.
 
 ### 2026-10-13
 
