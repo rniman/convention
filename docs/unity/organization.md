@@ -2,7 +2,7 @@
 
 [Unity 목차](index.md)
 
-상태: 초안 · 작성일: 2026-09-30 · 적용 범위: 직접 관리하는 Unity GameObject, Prefab, Scene, 일반 에셋과 Assets 내부 폴더
+상태: 초안 · 작성일: 2026-09-30 · 개정일: 2026-11-11 · 적용 범위: 직접 관리하는 Unity 프로젝트 루트·보조 폴더, GameObject, Prefab, Scene, 일반 에셋과 Assets 내부 폴더
 
 이름에서 대상과 차이를 읽고 자료를 찾을 위치를 예측할 수 있도록 정리한다. 아래 `필수`·`권장`·`선택`은 채택 시의 제안 강도다. 대화에서 논의한 후보이며 아직 개인 채택 규칙이 아니다. Unity·C# 버전과 렌더 파이프라인은 프로젝트에서 정한다. C# 식별자·코드 포맷은 이번 범위에서 제외한다.
 
@@ -14,11 +14,11 @@
 
 - **권장:** 의미 있는 영문 단어를 PascalCase로 연결한다. 위치·재질·외형·동작도 이름에 포함하며 공백을 `_`로 바꾸지 않는다. 예: `MainCamera`, `WallNorth`, `WallStoneDamaged`, `PlayerRun`.
 - **필수:** 같은 계열에서는 단어 순서를 유지한다. `WallStone`과 `StoneWall` 중 프로젝트에서 선택한 방식을 일관되게 사용한다.
-- **권장:** 폴더·그룹이 같은 종류의 모음이면 `Scenes`, `Prefabs`, `Walls`처럼 복수형을 쓴다. 개체·기능은 `Player`처럼 해당 명칭을 쓴다.
+- **권장:** 폴더·그룹의 단수·복수는 [폴더 이름과 단수·복수](#폴더-이름과-단수복수)의 의미 기준을 따른다.
 - **권장:** 필요한 정보만 이름에 담고, 직접 지정할 때 의미 없는 `New`, `Copy`, `FinalFinal`을 피한다.
 - **필수:** 대소문자만 다른 파일·폴더로 구분하지 않는다. 예: `Wall.png`와 `wall.png`.
 
-예약 이름·외부 도구가 요구하는 표기와 아래 `_Project` 루트 폴더는 예외다. 이 규칙은 Unity 콘텐츠용이며 UI 문구·번역 문자열에는 적용하지 않는다. 위키의 Markdown 경로는 기존 영문 소문자 `kebab-case`를 유지한다.
+Unity·도구가 관리하는 이름, 외부 원본과 기존 경로 호환성을 위한 표기는 아래 예외 기준을 따른다. UI 문구·번역 문자열에는 적용하지 않는다. 위키의 Markdown 경로는 기존 영문 소문자 `kebab-case`를 유지한다.
 
 ### 중복 이름과 번호
 
@@ -89,11 +89,35 @@ SpawnPoints
 
 ## 기본 폴더 구조
 
-**권장:** 작은 프로젝트는 종류별 폴더로 시작하고 직접 만든 콘텐츠를 `Assets/_Project/`에 모은다. `_Project`의 선행 `_`는 자체 콘텐츠 루트를 눈에 띄게 구분하기 위한 폴더 한정 예외다. 다른 폴더·에셋에 선행 `_`를 확장하지 않는다. 이 이름은 개인 구성 제안이며 Unity 예약 이름이 아니다. 프로젝트명을 루트 이름으로 사용해야 한다면 이유를 기록하고 일관되게 사용할 수 있다(**선택**).
+### 폴더 이름과 단수·복수
+
+**권장:** 직접 관리하는 폴더는 `PascalCase`로 정한다. 정렬용 접두어와 도구·기존 경로의 예외는 아래 기준을 따른다.
+
+| 대상·의미 | 권장 표기 | 적용 기준 |
+| --- | --- | --- |
+| 프로젝트 루트 | `ExampleGame/` | 제품을 식별하는 PascalCase. 개발자별 상위 보관 경로는 제외 |
+| 자체 콘텐츠 루트 | `Assets/Project/` | 직접 만든 콘텐츠를 외부 자료와 구분하는 기본안. `Project`는 Unity 예약 이름이 아님 |
+| 하나의 개체·기능 영역 | `Player/`, `Inventory/`, `Sandbox/` | 단수 또는 기능명 사용 |
+| 셀 수 있는 대상의 모음 | `Scenes/`, `Scripts/`, `Prefabs/`, `Models/`, `Characters/`, `Tests/` | 복수형 사용. 파일이 하나여도 역할이 같으면 이름 유지 |
+| 영역·불가산 개념 | `Art/`, `Audio/`, `UI/`, `Documentation/` | 자연스러운 용어를 유지하고 일괄적으로 `s`를 붙이지 않음 |
+
+**권장:** 같은 역할에는 같은 이름을 사용한다. 기존 소문자 경로 등은 참조·도구·협업 규칙과의 호환성을 위해 보존할 수 있으며, 이유와 범위를 프로젝트에 기록한다.
+
+### 자체 콘텐츠 루트와 정렬
+
+- **권장:** 자체 콘텐츠는 `Assets/Project/`에 모은다.
+- **선택:** 제품을 이름으로 구분하려면 `Assets/ExampleGame/`처럼 제품명을 사용한다. 신규 프로젝트에서도 선택할 수 있다.
+- **선택:** 이름순 목록에서 폴더를 우선 표시할 필요가 있으면 `_Project/`, `_ExampleGame/`, `_Shared/`처럼 선행 `_` 하나를 사용할 수 있다. 나머지 이름은 PascalCase로 쓰고, 적용 대상·이유를 프로젝트에서 통일한다. 실제 표시 순서는 사용하는 창·도구의 정렬 방식에서 확인한다.
+
+정렬용 `_`는 직접 관리하는 폴더에만 적용하며 Unity 예약 폴더·패키지·외부 고정 경로는 변경하지 않는다. 모든 폴더에 일괄 적용하지 않는다. 에셋·GameObject의 자동 복제 이름과 번호 구분용 `_`는 기존 기준을 따른다.
+
+### 종류별 배치와 확장
+
+**권장:** 작은 프로젝트는 종류별 폴더로 시작한다. 아래는 `Project/`를 선택한 예시다.
 
 ```text
 Assets/
-├── _Project/
+├── Project/
 │   ├── Scenes/
 │   ├── Scripts/
 │   ├── Prefabs/
@@ -115,15 +139,18 @@ Assets/
 - **권장:** 실험용 Scene·자료는 `Sandbox/`로 구분하고 제작용 콘텐츠가 의존하지 않게 관리한다. 폴더 이름만으로 빌드에서 제외되지는 않는다.
 - **권장:** 외부 자료는 직접 만든 자료와 분리한다. 이동 가능한 외부 에셋은 `ThirdParty/<공급자 또는 패키지명>/`에 둘 수 있다. 고정 경로를 요구하는 도구·패키지는 공급자의 배치를 유지한다.
 - **필수:** Package Manager 패키지를 이 구조에 맞추려고 `Assets/ThirdParty/`로 이동하지 않는다. 패키지의 관리 방식을 유지한다.
-- **선택:** 함께 수정할 파일이 여러 폴더에 흩어져 관리가 어려우면 `Assets/_Project/Characters/Player/`처럼 기능·개체별 구조로 전환한다. 필요하면 그 아래에 `Prefabs/`, `Models/`, `Animations/`를 둔다. 전용 자료와 공용 자료의 위치를 프로젝트에 기록한다.
+- **선택:** 함께 수정할 파일이 여러 폴더에 흩어져 관리가 어려우면 `Assets/Project/Characters/Player/`처럼 기능·개체별 구조로 전환한다. 필요하면 그 아래에 `Prefabs/`, `Models/`, `Animations/`를 둔다. 전용 자료와 공용 자료의 위치를 프로젝트에 기록한다.
+- **선택:** 빌드 산출물과 프로젝트 문서는 필요할 때 프로젝트 루트의 `Build/`, `Documentation/` 등에서 관리한다. 게임에서 사용할 에셋과 구분하고 문서 하위 Markdown 경로는 문서 규칙을 따른다. 외부 빌드·문서 도구가 정한 기존 경로는 연동 조건을 기록해 유지할 수 있다.
 
 기능별 구조와 종류별 구조에 같은 원본을 중복 보관하지 않는다(**필수**). 구체적인 프로젝트 트리와 전환 이유는 [프로젝트별 문서](../projects/index.md)에 기록한다.
 
 ### Unity 예약 폴더와 예외
 
+**필수:** `Assets/`, `Packages/`, `ProjectSettings/`와 `Library/`, `Temp/` 등 Unity가 사용하는 프로젝트 폴더는 도구의 이름·위치·관리 방식을 유지한다. 패키지 식별자·공급자 내부 경로·자동 생성 경로에 자체 PascalCase나 단수·복수 기준을 강제하지 않는다. 자체 자료를 모으는 `Project/`와 Unity의 프로젝트 루트 폴더를 구분한다.
+
 **필수:** `Editor`, `Resources`, `Plugins`, `StreamingAssets` 등은 Unity 동작에 영향을 주는 이름으로 취급한다. 필요할 때만 해당 프로젝트의 Unity 버전·플랫폼 문서를 확인하고 생성한다. 기본 트리에 이 폴더들을 자동 추가하지 않는다.
 
-Unity 6.0 문서에서 `StreamingAssets`는 `Assets` 바로 아래 위치를 요구한다. `Editor Default Resources`처럼 공백을 포함한 예약 이름도 있다. 이런 계약은 `_Project` 내부 배치나 공백 없는 이름 제안보다 우선한다. `Editor` 코드의 구체적인 분리와 assembly definition 구성은 이번 초안에서 결정하지 않는다.
+Unity 6.0 문서에서 `StreamingAssets`는 `Assets` 바로 아래 위치를 요구한다. `Editor Default Resources`처럼 공백을 포함한 예약 이름도 있다. 이런 계약은 `Project/` 내부 배치나 공백 없는 이름 제안보다 우선한다. `Editor` 코드의 구체적인 분리와 assembly definition 구성은 이번 초안에서 결정하지 않는다.
 
 ## 이름 변경·이동과 참조 보존
 
@@ -151,15 +178,20 @@ Unity 6.0 문서에서 `StreamingAssets`는 `Assets` 바로 아래 위치를 요
 
 사용자가 요청한 오브젝트·에셋 이름, 기본 폴더, `Wall_1` 같은 반복 이름과 공백·`_` 논의를 바탕으로 작성했다. [기존 C++ 명명](../coding/cpp/naming.md)과 [과거 컨벤션](../../ref/CodingConvention.md), [정리본](../../ref/DevRnimanConvention/CodingConvention.md)의 PascalCase·의미가 드러나는 이름을 참고했지만 C++의 `m`·`s`·`g` 접두어를 Unity 오브젝트에 확대하지 않았다.
 
-Unity 공식 가이드는 일관된 이름, 공백 없는 파일·폴더, 자체 자료와 외부 자료의 분리를 권고하며 단일 정답 구조를 정하지 않는다. 이 초안의 PascalCase, 번호 앞 `_`, 두 자리 번호, `_Project`와 구체적인 트리는 개인 제안이다. 검색과 식별을 쉽게 하고 초기 분류를 단순하게 하려는 이유로 제안했다. 자동 복제 이름 허용은 반복적인 수동 정리 비용에 대한 사용자 피드백을 반영한 개인 제안이며 공식 명명 규칙으로 간주하지 않는다. 공식 가이드의 일괄 재명명 권고와 달리 기존 프로젝트에는 영향 범위를 확인해 점진적으로 적용한다.
+Unity 공식 가이드는 일관된 이름, 공백 없는 파일·폴더, 자체 자료와 외부 자료의 분리를 권고하며 단일 정답 구조를 정하지 않는다. PascalCase·단수와 복수·번호 표기·루트 선택·구체적인 트리는 개인 제안이다. 루트 선택과 정렬용 `_`는 탐색 편의를, 자동 복제 이름 허용은 수동 정리 비용을 고려했다. 기존 프로젝트는 영향 범위를 확인해 점진적으로 적용한다.
 
 공식 자료 확인일: 2026-09-30. 프로젝트 구성 가이드는 별도 명세 버전이 없는 온라인 문서다. 엔진 동작의 확인 자료는 Unity 6.0(6000.0) Manual이며, 이는 프로젝트 버전 채택을 뜻하지 않는다. 다른 버전에서 예약 경로·도구 동작이 달라지면 해당 버전 자료를 확인하고 프로젝트 예외를 기록한다.
 
+폴더 개정 관련 재확인일: 2026-10-28. 프로젝트 구성 가이드의 Folder structure, Unity 6.0(6000.0)의 기본 프로젝트 폴더·예약 폴더·에셋 메타데이터를 확인했다. 특정 Unity 프로젝트의 실제 트리·적용 상태·이동 결과는 이번 요청에서 조사하거나 변경하지 않았다.
+
 - [Unity 프로젝트 구성 가이드 — Folder structure / Naming standards](https://unity.com/how-to/organizing-your-project): 명명·분류 권고와 자체·외부 자료 구분.
+- [Unity Manual — Default project directories](https://docs.unity3d.com/6000.0/Documentation/Manual/default-directories.html): Assets·Packages·ProjectSettings와 생성 폴더의 역할.
 - [Unity Manual — Asset IDs](https://docs.unity3d.com/6000.0/Documentation/Manual/AssetMetadata.html#asset-ids) · [Meta files / Moving and renaming assets](https://docs.unity3d.com/6000.0/Documentation/Manual/AssetMetadata.html#meta-files): 에셋 식별과 이동 시 메타데이터 보존.
 - [Unity Manual — Reserved folder name reference](https://docs.unity3d.com/6000.0/Documentation/Manual/SpecialFolders.html): 예약 폴더 이름·위치·용도.
 - [Unity Manual — Transforms, Properties / Parenting](https://docs.unity3d.com/6000.0/Documentation/Manual/class-Transform.html): 부모 기준 Transform과 계층 관계.
 
 ## 변경 기록
 
-- 2026-09-30: Unity 명명·Hierarchy 묶음 관리·폴더 구조·참조 보존 초안을 작성했다. 명명은 PascalCase를 기본으로 직접 관리하는 번호에 `_`를 사용하며, 동명 배치와 자동 복제 이름을 허용한다. 공통 규칙과 대상별 예시를 통합하고 빈 GameObject 그룹의 적용 기준을 정리했다. Unity 버전은 공통 고정하지 않으며 종류 접두어·C# 규칙은 미결정으로 남겼다.
+- 2026-11-11: 제품명 루트를 독립적인 선택지로 구분하고 정렬이 필요한 폴더의 선행 `_`를 조건부 허용하도록 초안을 수정했다. 중복 설명을 줄였으며 실제 프로젝트는 변경하지 않았다.
+- 2026-10-28: 폴더의 PascalCase·단수와 복수, `Project/` 기본안과 Unity 관리 경로의 예외를 보강했다.
+- 2026-09-30: Unity 명명·Hierarchy·폴더 구조·참조 보존 초안을 작성했다. 동명 배치·자동 복제 이름을 허용하고 직접 관리하는 번호 표기를 정했다.
